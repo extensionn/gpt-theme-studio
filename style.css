@@ -1,0 +1,11 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
+header { background: #6a1b9a; color: #fff; padding: 20px; text-align: center; }
+#themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 20px; }
+.theme-card { background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
+.theme-card h2 { margin-bottom: 12px; }
+.theme-card .download { background: #6a1b9a; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+.theme-card .download:hover { background: #5a157f; }
+footer { text-align: center; padding: 20px; }
+footer #login { background: #4285F4; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
+footer p { margin-top: 12px; color: #666; }

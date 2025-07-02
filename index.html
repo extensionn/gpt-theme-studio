@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT Theme Studio Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>GPT Theme Studio Marketplace</h1>
+  </header>
+
+  <section id="themes">
+    <!-- Example free themes -->
+    <div class="theme-card">
+      <h2>Image Theme</h2>
+      <button class="download">Download</button>
+    </div>
+    <div class="theme-card">
+      <h2>Modern Theme</h2>
+      <button class="download">Download</button>
+    </div>
+    <div class="theme-card">
+      <h2>Purple Theme</h2>
+      <button class="download">Download</button>
+    </div>
+    <div class="theme-card">
+      <h2>Blue Theme</h2>
+      <button class="download">Download</button>
+    </div>
+    <div class="theme-card">
+      <h2>Base Orange Theme</h2>
+      <button class="download">Download</button>
+    </div>
+  </section>
+
+  <footer>
+    <button id="login">Log in with Google</button>
+    <p>Want to upload your own theme? Coming soon!</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.download').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // replace YouTube link later
+        window.open('https://www.youtube.com', '_blank');
+      });
+    });
+    document.getElementById('login').addEventListener('click', () => {
+      // future OAuth flow
+      alert('Google login not yet implemented.');
+    });
+  </script>
+</body>
+</html>
