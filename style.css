@@ -1,11 +1,112 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
-header { background: #6a1b9a; color: #fff; padding: 20px; text-align: center; }
-#themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 20px; }
-.theme-card { background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
-.theme-card h2 { margin-bottom: 12px; }
-.theme-card .download { background: #6a1b9a; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
-.theme-card .download:hover { background: #5a157f; }
-footer { text-align: center; padding: 20px; }
-footer #login { background: #4285F4; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
-footer p { margin-top: 12px; color: #666; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #6a1b9a;
+  color: #fff;
+  padding: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-buttons button {
+  background: #fff;
+  color: #6a1b9a;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ede7f6;
+}
+
+.hero h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+#download-btn {
+  background: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  background: #ddd;
+  padding: 10px;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#themes {
+  padding: 40px 20px;
+  background: white;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.theme-card {
+  background: #fafafa;
+  border: 1px solid #ccc;
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.theme-card h3 {
+  margin-bottom: 12px;
+}
+
+.theme-card .download {
+  background: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#how-to, #contact {
+  padding: 40px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+footer {
+  background: #6a1b9a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
