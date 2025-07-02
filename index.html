@@ -4,42 +4,71 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ChatGPT Theme Studio</title>
-<link rel="stylesheet" href="style.css" />
 <style>
+  /* Genel Ayarlar */
   body {
-    font-family: Arial, sans-serif;
-    margin:0; padding:0;
-    background:#f4f4f4;
-    color:#333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+    background: #121212;
+    color: #eee;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
+
+  /* Header */
   header {
-    background:#6a1b9a;
-    padding:20px;
-    text-align:center;
-    color:#fff;
+    background: #6a1b9a;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
   }
+  header h1 {
+    margin: 0;
+    font-weight: 900;
+    font-size: 1.8rem;
+  }
+  .auth-buttons button {
+    background: transparent;
+    border: 2px solid #eee;
+    color: #eee;
+    padding: 8px 18px;
+    margin-left: 12px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .auth-buttons button:hover {
+    background: #eee;
+    color: #6a1b9a;
+  }
+
+  /* Navigation Buttons */
   .nav-buttons {
-    display:flex;
-    justify-content:center;
+    display: flex;
+    justify-content: center;
     gap: 40px;
     margin: 40px 0;
   }
   .nav-button {
-    font-size: 2.2rem;
-    font-weight: bold;
-    background:none;
-    border:none;
-    cursor:pointer;
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: none;
+    border: none;
+    cursor: pointer;
     padding-bottom: 8px;
     position: relative;
-    color: #6a1b9a;
+    color: #bbb;
     transition: color 0.3s ease;
   }
   .nav-button:hover {
-    color: #8e24aa;
+    color: #e53935;
   }
   .nav-button.active {
-    color: #e53935; /* kırmızı */
+    color: #e53935;
   }
   .nav-button.active::after {
     content: "";
@@ -47,25 +76,82 @@
     bottom: 0;
     left: 10%;
     width: 80%;
-    height: 3px;
+    height: 4px;
     background: #e53935;
     border-radius: 3px;
   }
 
+  /* Section */
   section {
     max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 0 auto 60px;
+    padding: 30px 40px;
     display: none;
+    background-color: #222;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.8);
   }
   section.active {
     display: block;
+  }
+  section h2 {
+    margin-bottom: 24px;
+    font-weight: 800;
+    font-size: 2rem;
+    color: #eee;
+  }
+  section p, section a {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+  }
+  section a {
+    color: #e53935;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  section a:hover {
+    text-decoration: underline;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media(max-width: 600px) {
+    .nav-buttons {
+      flex-direction: column;
+      gap: 24px;
+      margin: 20px 0;
+    }
+    .nav-button {
+      font-size: 1.8rem;
+    }
+    header {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .auth-buttons button {
+      margin-left: 0;
+      margin-right: 12px;
+    }
   }
 </style>
 </head>
 <body>
 
-<header><h1>ChatGPT Theme Studio</h1></header>
+<header>
+  <h1>ChatGPT Theme Studio</h1>
+  <div class="auth-buttons">
+    <button id="signin">Sign In</button>
+    <button id="signup">Sign Up</button>
+  </div>
+</header>
 
 <div class="nav-buttons">
   <button class="nav-button active" data-target="home">Home</button>
@@ -87,6 +173,7 @@
 <section id="howto">
   <h2>How To Use</h2>
   <p>Watch our tutorial video to learn how to use the extension.</p>
+  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">Watch Tutorial Video</a>
 </section>
 
 <section id="contact">
@@ -95,6 +182,10 @@
   <p>Discord: yourdiscordserver</p>
 </section>
 
+<footer>
+  <p>Discover more free & premium themes by exploring our marketplace.</p>
+</footer>
+
 <script>
   const buttons = document.querySelectorAll('.nav-button');
   const sections = document.querySelectorAll('section');
@@ -102,12 +193,12 @@
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const target = button.getAttribute('data-target');
-      
-      // Butonlarda active class ayarla
+
+      // Aktif butonu ayarla
       buttons.forEach(b => b.classList.remove('active'));
       button.classList.add('active');
 
-      // Bölümleri göster/gizle
+      // İlgili bölümü göster, diğerlerini gizle
       sections.forEach(sec => {
         if (sec.id === target) {
           sec.classList.add('active');
