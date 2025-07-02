@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPT Theme Studio Marketplace</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatGPT Theme Extension</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>GPT Theme Studio Marketplace</h1>
+    <h1>ChatGPT Theme Extension</h1>
   </header>
 
-  <section id="themes">
-    <!-- Example free themes -->
-    <div class="theme-card">
-      <h2>Image Theme</h2>
-      <button class="download">Download</button>
+  <main style="text-align:center; padding: 40px 20px;">
+    <div id="intro-text" style="min-height: 4em; font-size: 1.2rem; color: #444;">
+      <!-- Tanıtım yazısı buraya gelecek -->
     </div>
-    <div class="theme-card">
-      <h2>Modern Theme</h2>
-      <button class="download">Download</button>
-    </div>
-    <div class="theme-card">
-      <h2>Purple Theme</h2>
-      <button class="download">Download</button>
-    </div>
-    <div class="theme-card">
-      <h2>Blue Theme</h2>
-      <button class="download">Download</button>
-    </div>
-    <div class="theme-card">
-      <h2>Base Orange Theme</h2>
-      <button class="download">Download</button>
-    </div>
-  </section>
 
-  <footer>
-    <button id="login">Log in with Google</button>
-    <p>Want to upload your own theme? Coming soon!</p>
+    <section id="install" style="margin-top: 40px;">
+      <button id="install-btn" style="font-size: 1rem; padding: 12px 24px; background-color: #6a1b9a; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        Install Extension
+      </button>
+    </section>
+  </main>
+
+  <footer style="text-align:center; padding: 24px; background: #f1f1f1; color: #666;">
+    © 2025 GPT Theme Studio
   </footer>
 
   <script>
-    document.querySelectorAll('.download').forEach(btn => {
-      btn.addEventListener('click', () => {
-        // replace YouTube link later
-        window.open('https://www.youtube.com', '_blank');
-      });
-    });
-    document.getElementById('login').addEventListener('click', () => {
-      // future OAuth flow
-      alert('Google login not yet implemented.');
+    const btn = document.getElementById('install-btn');
+    const ua = navigator.userAgent;
+
+    // Bu URL'leri ileride gerçek linklerle değiştir
+    let url = 'https://www.youtube.com'; // default fallback
+
+    if (/Edg\\//.test(ua)) {
+      url = 'https://microsoftedge.microsoft.com/addons/detail/YOUR-EXTENSION-ID';
+    } else if (/Chrome\\//.test(ua)) {
+      url = 'https://chrome.google.com/webstore/detail/YOUR-EXTENSION-ID';
+    } else if (/Firefox\\//.test(ua)) {
+      url = 'https://addons.mozilla.org/firefox/addon/YOUR-EXTENSION-ID';
+    } else {
+      btn.textContent = 'Select Your Browser';
+    }
+
+    btn.addEventListener('click', () => {
+      if (btn.textContent === 'Select Your Browser') {
+        const list = document.createElement('ul');
+        list.style.listStyle = 'none';
+        list.style.marginTop = '16px';
+        list.innerHTML = `
+          <li><a href="https://chrome.google.com/webstore/detail/YOUR-EXTENSION-ID">Chrome</a></li>
+          <li><a href="https://microsoftedge.microsoft.com/addons/detail/YOUR-EXTENSION-ID">Edge</a></li>
+          <li><a href="https://addons.mozilla.org/firefox/addon/YOUR-EXTENSION-ID">Firefox</a></li>`;
+        document.getElementById('install').appendChild(list);
+      } else {
+        window.open(url, '_blank');
+      }
     });
   </script>
 </body>
