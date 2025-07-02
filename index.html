@@ -1,242 +1,147 @@
+Below are two files to bootstrap your marketplace site.
+
+1. **index.html** (place in the repository root):
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GPT Theme Studio</title>
-<style>
-  @font-face {
-    font-family: 'Avenir Next LT Pro';
-    src: local('Avenir Next LT Pro'), local('AvenirNextLTPro'),
-      url('https://fonts.cdnfonts.com/s/11309/AvenirNextLTPro.woff') format('woff');
-    font-weight: 200;
-    font-style: normal;
-  }
-
-  body {
-    font-family: 'avenir-next-lt-pro', sans-serif !important;
-    font-weight: 200 !important;
-    margin: 0; padding: 0;
-    background: #121212;
-    color: #eee;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  header {
-    background: #6a1b9a;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff;
-  }
-  header h1 {
-    margin: 0;
-    font-weight: 200 !important;
-    font-size: 2rem;
-    letter-spacing: 2px;
-  }
-  header h1 span {
-    font-weight: 900 !important;
-  }
-
-  .auth-buttons {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .auth-buttons button {
-    background: transparent;
-    border: 2px solid #eee;
-    color: #eee;
-    padding: 8px 18px;
-    font-weight: 700;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .auth-buttons button:hover {
-    background: #eee;
-    color: #6a1b9a;
-  }
-
-  /* Install Extension Button */
-  .install-extension {
-    background: #e53935;
-    border: none;
-    color: white;
-    font-weight: 700;
-    padding: 10px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-left: 20px;
-    transition: background-color 0.3s ease;
-  }
-  .install-extension:hover {
-    background: #b32b27;
-  }
-
-  .nav-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 40px 0;
-  }
-  .nav-button {
-    font-size: 2.4rem;
-    font-weight: 700;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding-bottom: 8px;
-    position: relative;
-    color: #bbb;
-    transition: color 0.3s ease;
-  }
-  .nav-button:hover {
-    color: #e53935;
-  }
-  .nav-button.active {
-    color: #e53935;
-  }
-  .nav-button.active::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    width: 80%;
-    height: 4px;
-    background: #e53935;
-    border-radius: 3px;
-  }
-
-  section {
-    max-width: 960px;
-    margin: 0 auto 60px;
-    padding: 30px 40px;
-    display: none;
-    background-color: #222;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgb(0 0 0 / 0.8);
-  }
-  section.active {
-    display: block;
-  }
-  section h2 {
-    margin-bottom: 24px;
-    font-weight: 800;
-    font-size: 2rem;
-    color: #eee;
-  }
-  section p, section a {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #ccc;
-  }
-  section a {
-    color: #e53935;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  section a:hover {
-    text-decoration: underline;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px 0;
-    color: #888;
-    font-size: 0.9rem;
-  }
-
-  @media(max-width: 600px) {
-    .nav-buttons {
-      flex-direction: column;
-      gap: 24px;
-      margin: 20px 0;
-    }
-    .nav-button {
-      font-size: 1.8rem;
-    }
-    header {
-      flex-direction: column;
-      gap: 16px;
-    }
-    .auth-buttons button {
-      margin-left: 0;
-      margin-right: 12px;
-    }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT Theme Studio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <div class="nav">
+      <h1>GPT Theme Studio</h1>
+      <div class="auth-buttons">
+        <button id="signin">Sign In</button>
+        <button id="signup">Sign Up</button>
+        <button class="install-extension" id="installBtn">Install Extension</button>
+      </div>
+    </div>
+  </header>
 
-<header>
-  <h1><span>GPT</span> Theme Studio</h1>
-  <div class="auth-buttons">
-    <button id="signin">Sign In</button>
-    <button id="signup">Sign Up</button>
-    <button class="install-extension" id="installBtn">Install Extension</button>
+  <div class="nav-buttons">
+    <button class="nav-button active" data-target="home">Home</button>
+    <button class="nav-button" data-target="carousel">Themes</button>
+    <button class="nav-button" data-target="howto">How To Use</button>
+    <button class="nav-button" data-target="contact">Contact</button>
   </div>
-</header>
 
-<div class="nav-buttons">
-  <button class="nav-button active" data-target="home">Home</button>
-  <button class="nav-button" data-target="themes">Themes</button>
-  <button class="nav-button" data-target="howto">How To Use</button>
-  <button class="nav-button" data-target="contact">Contact</button>
-</div>
+  <section id="home" class="active">
+    <h2>Welcome to GPT Theme Studio</h2>
+    <p>Customize your AI experience with stunning themes.</p>
+  </section>
 
-<section id="home" class="active">
-  <h2>Welcome to GPT Theme Studio</h2>
-  <p>Customize your AI experience with stunning themes.</p>
-</section>
+  <section id="carousel">
+    <div class="carousel">
+      <div class="slide active" data-site="/themes/ocean.html">
+        <img src="images/ocean-preview.png" alt="Ocean Theme Preview">
+        <div class="slide-info">
+          <h3>Ocean Theme</h3>
+          <a href="/themes/ocean.html" class="view-site">View Theme</a>
+          <button class="download-theme">Download</button>
+        </div>
+      </div>
+      <div class="slide" data-site="/themes/abstract-green.html">
+        <img src="images/abstract-green-preview.png" alt="Abstract Green Theme Preview">
+        <div class="slide-info">
+          <h3>Abstract Green Theme</h3>
+          <a href="/themes/abstract-green.html" class="view-site">View Theme</a>
+          <button class="download-theme">Download</button>
+        </div>
+      </div>
+      <div class="slide" data-site="/themes/sunset.html">
+        <img src="images/sunset-preview.png" alt="Sunset Theme Preview">
+        <div class="slide-info">
+          <h3>Sunset Theme</h3>
+          <a href="/themes/sunset.html" class="view-site">View Theme</a>
+          <button class="download-theme">Download</button>
+        </div>
+      </div>
+      <button class="carousel-prev">‹</button>
+      <button class="carousel-next">›</button>
+    </div>
+  </section>
 
-<section id="themes">
-  <h2>Available Themes</h2>
-  <!-- Temalar burada olacak -->
-</section>
+  <section id="howto">
+    <h2>How To Use</h2>
+    <p>Watch our tutorial video to learn how to use the extension.</p>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">Watch Tutorial Video</a>
+  </section>
 
-<section id="howto">
-  <h2>How To Use</h2>
-  <p>Watch our tutorial video to learn how to use the extension.</p>
-  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">Watch Tutorial Video</a>
-</section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: support@gpt-theme-studio.com</p>
+    <p>Discord: yourdiscordserver</p>
+  </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: support@gpt-theme-studio.com</p>
-  <p>Discord: yourdiscordserver</p>
-</section>
+  <footer>
+    <p>Discover more free & premium themes by exploring our marketplace.</p>
+  </footer>
 
-<footer>
-  <p>Discover more free & premium themes by exploring our marketplace.</p>
-</footer>
-
-<script>
-  const buttons = document.querySelectorAll('.nav-button');
-  const sections = document.querySelectorAll('section');
-
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const target = button.getAttribute('data-target');
-      buttons.forEach(b => b.classList.remove('active'));
-      button.classList.add('active');
-
-      sections.forEach(sec => {
-        if (sec.id === target) sec.classList.add('active');
-        else sec.classList.remove('active');
+  <script>
+    // Navigation
+    const buttons = document.querySelectorAll('.nav-button');
+    const sections = document.querySelectorAll('section');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.target;
+        buttons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        sections.forEach(sec => {
+          sec.classList.toggle('active', sec.id === target);
+        });
       });
     });
-  });
 
-  document.getElementById('installBtn').addEventListener('click', () => {
-    alert('Redirecting to extension install page...');
-    // Buraya tarayıcı algılama kodu eklenip uygun mağaza linki verilebilir.
-  });
-</script>
+    // Install Extension
+    document.getElementById('installBtn').addEventListener('click', () => {
+      const ua = navigator.userAgent;
+      let url = 'https://chrome.google.com/webstore/detail/YOUR-CHROME-ID';
+      if (/Edg\//.test(ua)) url = 'https://microsoftedge.microsoft.com/addons/detail/YOUR-EDGE-ID';
+      else if (/OPR\//.test(ua)) url = 'https://addons.opera.com/en/extensions/details/YOUR-OPERA-ID';
+      else if (/Firefox\//.test(ua)) url = 'https://addons.mozilla.org/firefox/addon/YOUR-FIREFOX-ID';
+      window.open(url, '_blank');
+    });
 
+    // Carousel
+    const slides = document.querySelectorAll('.slide');
+    let current=0;
+    function showSlide(idx) {
+      slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+    }
+    document.querySelector('.carousel-next').addEventListener('click', () => {
+      current = (current+1)%slides.length;
+      showSlide(current);
+    });
+    document.querySelector('.carousel-prev').addEventListener('click', () => {
+      current = (current-1+slides.length)%slides.length;
+      showSlide(current);
+    });
+    setInterval(() => { document.querySelector('.carousel-next').click(); }, 5000);
+
+    // Download buttons
+    document.querySelectorAll('.download-theme').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const slide = e.target.closest('.slide');
+        const site = slide.dataset.site;
+        window.location.href = site;
+      });
+    });
+  </script>
 </body>
 </html>
+```
+
+2. **style.css** (no change) remains as provided earlier. Replace images in `images/` folder accordingly.
+
+---
+
+**Next steps:**
+
+* Copy this updated `index.html` into your repo and push.
+* Add preview images under `images/` and create individual theme pages (`ocean.html`, `abstract-green.html`, `sunset.html`) with download logic.
+* Commit & push; Vercel will deploy. Let me know any tweaks!
