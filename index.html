@@ -1,84 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPT Theme Studio Marketplace</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatGPT Theme Studio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>GPT Theme Studio Marketplace</h1>
+    <div class="nav">
+      <h1>ChatGPT Theme Studio</h1>
+      <div class="auth-buttons">
+        <button id="signin">Sign In</button>
+        <button id="signup">Sign Up</button>
+      </div>
+    </div>
   </header>
 
+  <section class="hero">
+    <h2>Personalize your AI experience with custom themes</h2>
+    <button id="download-btn">Install Extension</button>
+  </section>
+
+  <nav class="main-nav">
+    <a href="#themes">Themes</a>
+    <a href="#how-to">How to Use</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <section id="themes">
-    <!-- Example free themes -->
-    <div class="theme-card">
-      <h2>Image Theme</h2>
-      <button class="download">Download</button>
-    </div>
-    <div class="theme-card">
-      <h2>Modern Theme</h2>
-      <button class="download">Download</button>
-    </div>
-    <div class="theme-card">
-      <h2>Purple Theme</h2>
-      <button class="download">Download</button>
-    </div>
-    <div class="theme-card">
-      <h2>Blue Theme</h2>
-      <button class="download">Download</button>
-    </div>
-    <div class="theme-card">
-      <h2>Base Orange Theme</h2>
-      <button class="download">Download</button>
+    <h2>Available Themes</h2>
+    <div class="theme-grid">
+      <div class="theme-card"><h3>Image Theme</h3><button class="download">Download</button></div>
+      <div class="theme-card"><h3>Modern Theme</h3><button class="download">Download</button></div>
+      <div class="theme-card"><h3>Purple Theme</h3><button class="download">Download</button></div>
+      <div class="theme-card"><h3>Blue Theme</h3><button class="download">Download</button></div>
+      <div class="theme-card"><h3>Base Orange Theme</h3><button class="download">Download</button></div>
     </div>
   </section>
 
+  <section id="how-to">
+    <h2>How to Use</h2>
+    <p>Watch our short tutorial to get started:</p>
+    <a href="https://www.youtube.com" target="_blank">Watch Tutorial Video</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>For questions or support:</p>
+    <p>Email: support@gpt-theme-studio.com</p>
+    <p>Discord: yourdiscordserver</p>
+  </section>
+
   <footer>
-    <button id="login">Log in with Google</button>
-    <p>Want to upload your own theme? Coming soon!</p>
+    <p>Discover more free & premium themes by exploring our marketplace.</p>
   </footer>
 
   <script>
+    // Tarayıcıya göre mağaza linki
+    document.getElementById("download-btn").addEventListener("click", () => {
+      const ua = navigator.userAgent;
+      let url = "https://www.youtube.com"; // fallback
+
+      if (/Edg\//.test(ua)) {
+        url = "https://microsoftedge.microsoft.com/addons/detail/YOUR-EDGE-ID";
+      } else if (/Chrome/.test(ua)) {
+        url = "https://chrome.google.com/webstore/detail/YOUR-CHROME-ID";
+      } else if (/OPR\//.test(ua)) {
+        url = "https://addons.opera.com/en/extensions/details/YOUR-OPERA-ID";
+      } else if (/Firefox/.test(ua)) {
+        url = "https://addons.mozilla.org/firefox/addon/YOUR-FIREFOX-ID";
+      }
+
+      window.open(url, "_blank");
+    });
+
+    // Tüm indirme butonları aynı hedefe yönlendiriyor (örnek)
     document.querySelectorAll('.download').forEach(btn => {
       btn.addEventListener('click', () => {
-        // replace YouTube link later
-        window.open('https://www.youtube.com', '_blank');
+        alert("Please sign in to download this theme.");
+        // Gelecekte: oturum kontrolü sonrası indirme açılacak
       });
-    });
-    document.getElementById('login').addEventListener('click', () => {
-      // future OAuth flow
-      alert('Google login not yet implemented.');
     });
   </script>
 </body>
 </html>
-```
-
-2. **style.css** (also in the root):
-
-```css
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
-header { background: #6a1b9a; color: #fff; padding: 20px; text-align: center; }
-#themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 20px; }
-.theme-card { background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
-.theme-card h2 { margin-bottom: 12px; }
-.theme-card .download { background: #6a1b9a; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
-.theme-card .download:hover { background: #5a157f; }
-footer { text-align: center; padding: 20px; }
-footer #login { background: #4285F4; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
-footer p { margin-top: 12px; color: #666; }
-```
-
----
-
-**Next steps:**
-
-1. Copy these two files into your `gpt-theme-studio` GitHub repository.
-2. Commit & push to GitHub.
-3. In Vercel, click **Import Project**, select your `gpt-theme-studio` repo.
-4. Deploy: You’ll get `https://gpt-theme-studio.vercel.app` (if available).
-
-Let me know once deployed or if you need help with Git/GitHub commands!
